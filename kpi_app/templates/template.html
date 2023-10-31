@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <table border='1'>
+    <tr>
+      <th>KPI name</th>
+      <th>Circle</th>
+      <th>Value</th>
+      <th>Last updated</th>
+    </tr>
+    {% for x in kpis %}
+      <tr>
+        <td>{{ x.kpi_name }}</td>
+        <td>{{ x.circle }}</td>
+        <td>{{ x.value }}</td>
+        <td>{{ x.upd_date }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+</body>
+</html>

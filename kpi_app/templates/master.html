@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+  <div class="topnav">
+    <a href="/home">HOME</a> |
+    <a href="/circles">CIRCLES</a> |
+    <a href="{% url 'logout' %}">LOG OUT</a> 
+</div>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

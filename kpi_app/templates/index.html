@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <h2>Welcome back, {{ user.username }}!</h2>
+
+  <h1>This is the KPI portal of Sample Organisation</h1>
+<p>Key Performance Indicators (KPIs) are measurable values or metrics that organisations use to track and assess their performance and progress toward achieving specific goals or objectives. KPIs are essential for evaluating the success of an organisation, department, project, or individual in various areas of business and can vary depending on the industry, goals, and objectives.</p>
+{% else %}
+  <p>You are now logged out</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+
+{% endblock %}
+
+</body>
+</html>

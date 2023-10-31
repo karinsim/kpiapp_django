@@ -1,0 +1,15 @@
+{% extends "master.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Thank you, {{ user.username }}. The KPI {{ name }} has been updated.</h1>
+<a href="/circles/{{ cid }}/{{ kid }}/">Back to the update page</a>
+
+{% else %}
+  <p>Access denied</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "master.html" %}
+
+{% block title %}
+  The KPIs of {{ name }}
+{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<p>Welcome back, {{ user.username }}!</p>
+  <h1>KPIs of {{ name }} </h1>
+
+  <div class="mycard">
+    {% for k in kpis %}
+      <li><a href="/circles/{{ cid }}/{{ k.id }}">{{ k.kpi_name }}</a></li>
+    {% endfor %}
+  </div>
+  
+  <p>Back to <a href="/circles/">Circles</a></p>
+
+  {% else %}
+  <p>Access denied. Log in to view this page</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
+

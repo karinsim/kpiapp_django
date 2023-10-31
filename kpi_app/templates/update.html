@@ -1,0 +1,45 @@
+{% extends "master.html" %}
+
+{% block title %}
+  {{ name }}
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<p>Welcome back, {{ user.username }}!</p>
+
+<h1>Welcome to the update page of {{ name }}</h1>
+
+<form action=" " method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+
+<h1>Latest entries of {{ name }}</h1>
+
+<table>
+<tr>
+    <th>Year</th>
+    <th>Month</th>
+    <th>Value</th>
+    <th>Updated on</th>
+    <th>Updated by</th>
+</tr>
+{% for year, month, value, date, name  in items %}
+<tr>
+    <td>{{ year }}</td>
+    <td>{{ month }}</td>
+    <td>{{ value }}</td>
+    <td>{{ date }}</td>
+    <td>{{ name }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<p>Back to the list of <a href="/circles/{{ cid }}">KPIs</a></p>
+{% else %}
+  <p>Access denied. Log in to view this page</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "master.html" %}
+
+{% block title %}
+  List of all circles
+{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<p>Welcome back, {{ user.username }}!</p>
+  <div class="mycard">
+    <h1>Select your Circle</h1>
+    <ul>
+      {% for c in circles %}
+        <li onclick="window.location = '/circles/{{ c.id }}'">{{ c.circle_name }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% else %}
+  <p>Access denied. Log in to view this page</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
+
+
+
+
